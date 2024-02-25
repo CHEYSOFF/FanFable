@@ -22,31 +22,40 @@ val WelcomeScreenDescriptionTextSize = 22.sp
 val WelcomeScreenChooseUserChooserTextSize = 18.sp
 val WelcomeScreenChooseUserHeaderTextSize = 25.sp
 
+val BottomBarTextSize = 18.sp
+
 val WelcomeScreenHeaderTextStyle = TextStyle(
     fontFamily = ViburFontFamily,
     fontWeight = FontWeight.Bold,
     fontSize = WelcomeScreenHeaderTextSize,
-    color = WelcomeScreenElementsColor
+    color = ScreenElementsColor
 )
 
 val WelcomeScreenDescriptionTextStyle = TextStyle(
     fontFamily = UrbanistFontFamily,
     fontWeight = FontWeight.ExtraBold,
     fontSize = WelcomeScreenDescriptionTextSize,
-    color = WelcomeScreenElementsColor
+    color = ScreenElementsColor
 )
 
 val WelcomeScreenChooseUserChooserTextStyle = TextStyle(
     fontFamily = UrbanistFontFamily,
     fontWeight = FontWeight.ExtraBold,
     fontSize = WelcomeScreenChooseUserChooserTextSize,
-    color = WelcomeScreenElementsColor
+    color = ScreenElementsColor
 )
 
 val WelcomeScreenChooseUserHeaderTextStyle = TextStyle(
     fontFamily = UrbanistFontFamily,
     fontWeight = FontWeight.ExtraBold,
     fontSize = WelcomeScreenChooseUserHeaderTextSize,
-    color = WelcomeScreenElementsColor
+    color = ScreenElementsColor
+)
+
+val BottomBarTextStyle = TextStyle(
+    fontFamily = UrbanistFontFamily,
+    fontWeight = FontWeight.ExtraBold,
+    fontSize = BottomBarTextSize,
+    color = ScreenElementsColor
 )
 

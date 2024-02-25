@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import cheysoff.fanfable.R
 import cheysoff.fanfable.presentation.screens.components.BottomNextButtonScreen
 import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenDescriptionTextStyle
-import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenElementsColor
+import cheysoff.fanfable.presentation.screens.theme.ScreenElementsColor
 import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenHeaderTextStyle
 
 @Composable
@@ -32,7 +32,7 @@ fun ShowWelcomeScreen(navController: NavController) {
 
                 Icon(
                     painter = painterResource(id = R.drawable.book_icon),
-                    tint = WelcomeScreenElementsColor,
+                    tint = ScreenElementsColor,
                     contentDescription = null
                 )
 

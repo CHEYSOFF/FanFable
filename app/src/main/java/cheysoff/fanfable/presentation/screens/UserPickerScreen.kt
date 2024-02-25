@@ -31,14 +31,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import cheysoff.fanfable.presentation.screens.components.BottomNextButtonScreen
+import cheysoff.fanfable.presentation.screens.theme.ScreenElementsColor
 import cheysoff.fanfable.presentation.screens.theme.UserChooserEvenCardBackgroundColor
 import cheysoff.fanfable.presentation.screens.theme.UserChooserOddCardBackgroundColor
 import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenChooseUserChooserTextStyle
 import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenChooseUserHeaderTextStyle
-import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenElementsColor
 
 @Composable
-fun ShowUserPickerScreen(navController: NavController) {
+fun ShowUserPickerScreen(navController: NavController, onClick: (UserType) -> Unit) {
     var selectedUserType by remember { mutableStateOf(UserType.READER) }
 
     BottomNextButtonScreen(
@@ -56,13 +56,17 @@ fun ShowUserPickerScreen(navController: NavController) {
             }
         },
         nextButtonOnClick = {
-            navController.navigate(
-                when (selectedUserType) {
-                    UserType.READER -> NavigationItem.Feed.route
-                    UserType.WRITER -> NavigationItem.MyStories.route
-                }
-            )
+            onClick(selectedUserType)
+            navController.navigate(NavigationItem.Main.route)
         }
+//        {
+//            navController.navigate(
+//                when (selectedUserType) {
+//                    UserType.READER -> NavigationItem.Feed.route
+//                    UserType.WRITER -> NavigationItem.MyStories.route
+//                }
+//            )
+//        }
     )
 }
 
@@ -120,7 +124,7 @@ private fun OptionItem(
                     .clip(CircleShape)
                     .size(20.dp)
                     .background(rowBackgroundColor)
-                    .border(3.dp, WelcomeScreenElementsColor, CircleShape)
+                    .border(3.dp, ScreenElementsColor, CircleShape)
                     .padding(5.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -128,7 +132,7 @@ private fun OptionItem(
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         shape = CircleShape,
-                        color = WelcomeScreenElementsColor
+                        color = ScreenElementsColor
                     ) {}
                 }
             }

@@ -5,9 +5,7 @@ enum class Screen {
     UserPicker,
     Login,
     Registration,
-    Feed,
-    MyStories,
-    Profile
+    Main
 }
 
 sealed class NavigationItem(val route: String) {
@@ -15,7 +13,5 @@ sealed class NavigationItem(val route: String) {
     data object UserPicker : NavigationItem(Screen.UserPicker.name)
     data object Login : NavigationItem(Screen.Login.name)
     data object Registration : NavigationItem(Screen.Registration.name)
-    data object Feed : NavigationItem(Screen.Feed.name)
-    data object MyStories : NavigationItem(Screen.MyStories.name)
-    data object Profile : NavigationItem(Screen.Profile.name)
+    data object Main : NavigationItem(Screen.Main.name)
 }

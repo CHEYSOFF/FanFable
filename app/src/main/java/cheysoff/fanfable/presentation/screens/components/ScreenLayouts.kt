@@ -17,7 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import cheysoff.fanfable.R
 import cheysoff.fanfable.presentation.screens.theme.BackgroundColor
-import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenElementsColor
+import cheysoff.fanfable.presentation.screens.theme.ScreenElementsColor
 
 @Composable
 fun BottomNextButtonScreen(
@@ -36,7 +36,7 @@ fun BottomNextButtonScreen(
             ) {
                 Surface(
                     shape = CircleShape,
-                    color = WelcomeScreenElementsColor
+                    color = ScreenElementsColor
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.arrow_next_button),

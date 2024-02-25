@@ -9,7 +9,7 @@ val Pink = Color(0xffDD91FF)
 val LightPink = Color(0xffFFB4FF)
 val White = Color(0xFFFFFFFF)
 
-val WelcomeScreenElementsColor = DarkPurple
+val ScreenElementsColor = DarkPurple
 
 val BackgroundColor = White
 
