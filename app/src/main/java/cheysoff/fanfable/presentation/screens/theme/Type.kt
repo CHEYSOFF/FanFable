@@ -17,7 +17,7 @@ val UrbanistFontFamily = FontFamily(
     Font(R.font.urbanist_extra_bold, FontWeight.ExtraBold)
 )
 
-val WelcomeScreenHeaderTextSize = 51.sp
+val WelcomeScreenHeaderTextSize = 55.sp
 val WelcomeScreenDescriptionTextSize = 22.sp
 
 val WelcomeScreenChooseUserChooserTextSize = 20.sp
@@ -27,7 +27,13 @@ val BottomBarTextSize = 18.sp
 
 val LoginFieldTextSize = 15.sp
 
-val HaveAccountText = 15.sp
+val HaveAccountTextSize = 15.sp
+
+val SignUpTextSize = 19.sp
+
+val RegistrationOrTextSize = 20.sp
+
+val ContinueWithoutRegistrationTextSize = 17.sp
 
 val WelcomeScreenHeaderTextStyle = TextStyle(
     fontFamily = ViburFontFamily,
@@ -83,7 +89,7 @@ val LoginFieldTextStyle = TextStyle(
 val HaveAccountTextStyle = TextStyle(
     fontFamily = UrbanistFontFamily,
     fontWeight = FontWeight.Normal,
-    fontSize = HaveAccountText,
+    fontSize = HaveAccountTextSize,
     color = ScreenElementsColor,
 //    letterSpacing = (2f).sp
 )
@@ -91,8 +97,28 @@ val HaveAccountTextStyle = TextStyle(
 val HaveAccountLogInTextStyle = TextStyle(
     fontFamily = UrbanistFontFamily,
     fontWeight = FontWeight.Normal,
-    fontSize = HaveAccountText,
+    fontSize = HaveAccountTextSize,
     color = Peach,
 //    letterSpacing = (2f).sp
+)
+
+val SignUpButtonTextStyle = TextStyle(
+    fontFamily = UrbanistFontFamily,
+    fontWeight = FontWeight.ExtraBold,
+    fontSize = SignUpTextSize,
+)
+
+val RegistrationOrTextStyle = TextStyle(
+    fontFamily = UrbanistFontFamily,
+    fontWeight = FontWeight.ExtraBold,
+    fontSize = RegistrationOrTextSize,
+    color = RegistrationOrColor
+)
+
+val ContinueWithoutRegistrationTextStyle = TextStyle(
+    fontFamily = UrbanistFontFamily,
+    fontWeight = FontWeight.Bold,
+    fontSize = ContinueWithoutRegistrationTextSize,
+    color = ScreenElementsColor,
 )
 
