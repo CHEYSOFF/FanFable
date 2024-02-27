@@ -31,11 +31,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import cheysoff.fanfable.presentation.screens.components.BottomNextButtonScreen
+import cheysoff.fanfable.presentation.screens.theme.HiHeaderTextStyle
 import cheysoff.fanfable.presentation.screens.theme.ScreenElementsColor
 import cheysoff.fanfable.presentation.screens.theme.UserChooserEvenCardBackgroundColor
 import cheysoff.fanfable.presentation.screens.theme.UserChooserOddCardBackgroundColor
 import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenChooseUserChooserTextStyle
-import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenChooseUserHeaderTextStyle
 
 @Composable
 fun ShowUserPickerScreen(navController: NavController, onClick: (UserType) -> Unit) {
@@ -45,7 +45,7 @@ fun ShowUserPickerScreen(navController: NavController, onClick: (UserType) -> Un
         topComposable = {
             Text(
                 text = "Who are you?",
-                style = WelcomeScreenChooseUserHeaderTextStyle
+                style = HiHeaderTextStyle
             )
         },
         midComposable = {
@@ -59,14 +59,6 @@ fun ShowUserPickerScreen(navController: NavController, onClick: (UserType) -> Un
             onClick(selectedUserType)
             navController.navigate(NavigationItem.Main.route)
         }
-//        {
-//            navController.navigate(
-//                when (selectedUserType) {
-//                    UserType.READER -> NavigationItem.Feed.route
-//                    UserType.WRITER -> NavigationItem.MyStories.route
-//                }
-//            )
-//        }
     )
 }
 
@@ -76,9 +68,10 @@ private fun OptionsList(chosenOption: UserType, onSelected: (UserType) -> Unit) 
 
     LazyColumn(
         modifier = Modifier
-            .height(80.dp)
+            .height(120.dp)
             .fillMaxWidth(0.85f)
-            .clip(RoundedCornerShape(5.dp))
+            .clip(RoundedCornerShape(5.dp)),
+        userScrollEnabled = false
     ) {
         itemsIndexed(UserType.entries.toTypedArray()) { index, option ->
             OptionItem(
@@ -115,7 +108,11 @@ private fun OptionItem(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = type.name,
+                text = when (type) {
+                    UserType.READER -> "Reader"
+                    UserType.WRITER -> "Writer"
+                    UserType.BOTH -> "I'm Reader and Writer"
+                },
                 style = WelcomeScreenChooseUserChooserTextStyle
             )
 
@@ -143,6 +140,7 @@ private fun OptionItem(
 }
 
 enum class UserType {
+    WRITER,
     READER,
-    WRITER
+    BOTH,
 }

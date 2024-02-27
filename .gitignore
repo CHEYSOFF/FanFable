@@ -28,3 +28,4 @@ settings.gradle.kts
 .idea/migrations.xml
 .idea/kotlinc.xml
 .idea/gradle.xml
+.idea/inspectionProfiles/Project_Default.xml

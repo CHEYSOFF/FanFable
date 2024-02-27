@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                 }
                 composable(NavigationItem.Main.route) {
                     when (userType) {
-                        UserType.READER -> BottomBar(
+                        UserType.READER, UserType.BOTH -> BottomBar(
                             navController = navController,
                             selectedItem = BottomBarItem.Feed
                         )
