@@ -3,19 +3,28 @@ package cheysoff.fanfable.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import cheysoff.fanfable.presentation.screens.NavigationItem
-import cheysoff.fanfable.presentation.screens.ShowUserPickerScreen
-import cheysoff.fanfable.presentation.screens.ShowWelcomeScreen
-import cheysoff.fanfable.presentation.screens.UserType
-import cheysoff.fanfable.presentation.screens.components.BottomBar
-import cheysoff.fanfable.presentation.screens.components.BottomBarItem
+import androidx.activity.viewModels
+import cheysoff.fanfable.presentation.screens.genreselectionscreen.GenreSelectionScreen
+import cheysoff.fanfable.presentation.screens.genreselectionscreen.GenreSelectionViewModel
+import com.google.firebase.FirebaseApp
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    private val viewModel: GenreSelectionViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        FirebaseApp.initializeApp(this)
+        viewModel.loadGenreInfo()
+
+        setContent {
+            GenreSelectionScreen(state = viewModel.state)
+        }
+
+        /*
         setContent {
             val navController = rememberNavController()
             var userType = UserType.READER
@@ -53,7 +62,9 @@ class MainActivity : ComponentActivity() {
 //                }
             }
         }
+    */
 
     }
+
 
 }

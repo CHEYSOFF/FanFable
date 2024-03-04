@@ -1,4 +1,4 @@
-package cheysoff.fanfable.presentation.screens
+package cheysoff.fanfable.presentation.screens.welcomescreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -30,6 +30,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import cheysoff.fanfable.presentation.screens.NavigationItem
 import cheysoff.fanfable.presentation.screens.components.BottomNextButtonScreen
 import cheysoff.fanfable.presentation.screens.theme.HiHeaderTextStyle
 import cheysoff.fanfable.presentation.screens.theme.ScreenElementsColor

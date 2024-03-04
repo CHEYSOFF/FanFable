@@ -1,5 +1,6 @@
 package cheysoff.fanfable.presentation.screens.theme
 
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -34,6 +35,11 @@ val SignUpTextSize = 19.sp
 val RegistrationOrTextSize = 20.sp
 
 val ContinueWithoutRegistrationTextSize = 17.sp
+
+val SelectGenreHeaderTextSize = 28.sp
+val GenreTypeTextSize = 15.sp
+
+val NextButtonTextSize = 20.sp
 
 val WelcomeScreenHeaderTextStyle = TextStyle(
     fontFamily = ViburFontFamily,
@@ -120,5 +126,26 @@ val ContinueWithoutRegistrationTextStyle = TextStyle(
     fontWeight = FontWeight.Bold,
     fontSize = ContinueWithoutRegistrationTextSize,
     color = ScreenElementsColor,
+)
+
+val SelectGenreHeaderTextStyle = TextStyle(
+    fontFamily = UrbanistFontFamily,
+    fontWeight = FontWeight.ExtraBold,
+    fontSize = SelectGenreHeaderTextSize,
+    color = Color.White,
+)
+
+val GenreTypeTextStyle = TextStyle(
+    fontFamily = UrbanistFontFamily,
+    fontWeight = FontWeight.ExtraBold,
+    fontSize = GenreTypeTextSize,
+    color = ScreenElementsColor,
+)
+
+val NextButtonTextStyle = TextStyle(
+    fontFamily = UrbanistFontFamily,
+    fontWeight = FontWeight.ExtraBold,
+    fontSize = NextButtonTextSize,
+    color = BackgroundColor,
 )
 

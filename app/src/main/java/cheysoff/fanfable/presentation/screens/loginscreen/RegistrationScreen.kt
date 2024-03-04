@@ -1,4 +1,4 @@
-package cheysoff.fanfable.presentation.screens
+package cheysoff.fanfable.presentation.screens.loginscreen
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
@@ -205,7 +205,7 @@ private fun BasicTextField(onValueChange: (String) -> Unit, textFieldType: TextF
         trailingIcon = {
             when (textFieldType) {
                 TextFieldType.Password -> {
-                    val image = if (passwordVisible) R.drawable.dont_show_password_icon
+                    val image = if (passwordVisible) R.drawable.show_password_icon
                     else R.drawable.dont_show_password_icon
 
                     val description =

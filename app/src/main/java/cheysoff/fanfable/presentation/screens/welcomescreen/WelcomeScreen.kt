@@ -1,4 +1,4 @@
-package cheysoff.fanfable.presentation.screens
+package cheysoff.fanfable.presentation.screens.welcomescreen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,9 +10,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import cheysoff.fanfable.R
+import cheysoff.fanfable.presentation.screens.NavigationItem
 import cheysoff.fanfable.presentation.screens.components.BottomNextButtonScreen
-import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenDescriptionTextStyle
 import cheysoff.fanfable.presentation.screens.theme.ScreenElementsColor
+import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenDescriptionTextStyle
 import cheysoff.fanfable.presentation.screens.theme.WelcomeScreenHeaderTextStyle
 
 @Composable
@@ -36,7 +37,7 @@ fun ShowWelcomeScreen(navController: NavController) {
                     contentDescription = null
                 )
 
-                Text(text = "Welcome to FanFable", style = WelcomeScreenDescriptionTextStyle)
+                Text(text = "Welcome to OnlyFanf", style = WelcomeScreenDescriptionTextStyle)
             }
         },
         nextButtonOnClick = { navController.navigate(NavigationItem.UserPicker.route) }
