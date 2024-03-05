@@ -11,6 +11,8 @@ val LightPink = Color(0xffFFB4FF)
 val White = Color(0xFFFFFFFF)
 val Peach = Color(0xFFEE9090)
 
+val White45 = White.copy(alpha = 0.45f)
+
 val TransparentPurple29 = DarkPurple.copy(alpha = 0.29f)
 val TransparentPurple21 = DarkPurple.copy(alpha = 0.21f)
 val TransparentPink20 = Color(0x33D9D9D9)
@@ -30,7 +32,25 @@ val ActiveButtonColor = ScreenElementsColor
 
 val RegistrationOrColor = Violet
 
-val NextButtonGradient1 = Color(0xFF6132AE)
-val NextButtonGradient2 = Color(0xFF6E3EB3)
-val NextButtonGradient3= Color(0xFF945AC8)
-val NextButtonGradient4 = Color(0xFFB96EDA)
+val NextButtonActiveGradient1 = Color(0xFF6132AE)
+val NextButtonActiveGradient2 = Color(0xFF6E3EB3)
+val NextButtonActiveGradient3= Color(0xFF945AC8)
+val NextButtonActiveGradient4 = Color(0xFFB96EDA)
+
+val NextButtonInActiveGradient1 = Color(0xFF9662EE)
+val NextButtonInActiveGradient2 = Color(0xFFB193E2)
+val NextButtonInActiveGradient3= Color(0xFFCBB3D6)
+//val NextButtonInActiveGradient4 = Color(0xFFB96EDA)
+
+val NextButtonActiveGradientList = listOf(
+    NextButtonActiveGradient1,
+    NextButtonActiveGradient2,
+    NextButtonActiveGradient3,
+    NextButtonActiveGradient4,
+)
+
+val NextButtonInActiveGradientList = listOf(
+    NextButtonInActiveGradient1,
+    NextButtonInActiveGradient2,
+    NextButtonInActiveGradient3,
+)

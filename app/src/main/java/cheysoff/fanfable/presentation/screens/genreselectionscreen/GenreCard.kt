@@ -47,7 +47,7 @@ fun ShowGenreCard(
         shadowElevation = 5.dp,
         onClick = {
             isChosen = !isChosen
-            onClick
+            onClick(isChosen)
         }
     ) {
 

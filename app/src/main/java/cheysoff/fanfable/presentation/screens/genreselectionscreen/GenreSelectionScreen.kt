@@ -22,6 +22,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,10 +37,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import cheysoff.fanfable.R
 import cheysoff.fanfable.presentation.screens.theme.BackgroundColor
-import cheysoff.fanfable.presentation.screens.theme.NextButtonGradient1
-import cheysoff.fanfable.presentation.screens.theme.NextButtonGradient2
-import cheysoff.fanfable.presentation.screens.theme.NextButtonGradient3
-import cheysoff.fanfable.presentation.screens.theme.NextButtonGradient4
+import cheysoff.fanfable.presentation.screens.theme.NextButtonActiveGradientList
+import cheysoff.fanfable.presentation.screens.theme.NextButtonInActiveGradientList
 import cheysoff.fanfable.presentation.screens.theme.NextButtonTextStyle
 import cheysoff.fanfable.presentation.screens.theme.ScreenElementsColor
 import cheysoff.fanfable.presentation.screens.theme.SelectGenreHeaderTextStyle
@@ -44,7 +46,9 @@ import cheysoff.fanfable.presentation.screens.theme.SelectGenreHeaderTextStyle
 //@Preview
 @Composable
 fun GenreSelectionScreen(state: GenreScreenState) {
+    var isButtonEnabled by rememberSaveable { mutableStateOf(false) }
     val chosenGenres = mutableSetOf<String>()
+
     Scaffold(
         modifier = Modifier
             .background(ScreenElementsColor)
@@ -84,15 +88,11 @@ fun GenreSelectionScreen(state: GenreScreenState) {
             ) {
                 GradientButton(
                     onClick = { /* Handle button click */ },
+                    enabled = isButtonEnabled,
                     modifier = Modifier
                         .padding(horizontal = 25.dp, vertical = 30.dp)
                         .fillMaxSize(),
-                    colors = listOf(
-                        NextButtonGradient1,
-                        NextButtonGradient2,
-                        NextButtonGradient3,
-                        NextButtonGradient4,
-                    )
+                    colors = if (isButtonEnabled) NextButtonActiveGradientList else NextButtonInActiveGradientList
                 ) {
                     Text(
                         text = "Next",
@@ -104,9 +104,11 @@ fun GenreSelectionScreen(state: GenreScreenState) {
         }
     ) {
         if (state.isLoading) {
-            Box(modifier = Modifier
-                .padding(it)
-                .fillMaxSize()) {
+            Box(
+                modifier = Modifier
+                    .padding(it)
+                    .fillMaxSize()
+            ) {
                 CircularProgressIndicator(
                     color = BackgroundColor,
                     modifier = Modifier.align(Alignment.Center)
@@ -132,6 +134,8 @@ fun GenreSelectionScreen(state: GenreScreenState) {
                         } else {
                             chosenGenres.remove(genre.genreName)
                         }
+
+                        isButtonEnabled = chosenGenres.isNotEmpty()
                     }, modifier = modifier)
                 }
             }
@@ -151,12 +155,14 @@ fun GenreSelectionScreen(state: GenreScreenState) {
 @Composable
 fun GradientButton(
     onClick: () -> Unit,
+    enabled: Boolean,
     modifier: Modifier = Modifier,
     colors: List<Color>,
     content: @Composable RowScope.() -> Unit
 ) {
     Button(
         onClick = onClick,
+        enabled = enabled,
         modifier = modifier
             .shadow(
                 elevation = 4.dp,
@@ -167,7 +173,10 @@ fun GradientButton(
                 brush = Brush.verticalGradient(colors = colors),
                 shape = RoundedCornerShape(42.dp)
             ),
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.Transparent,
+            disabledContentColor = Color.Transparent
+        ),
         content = content
     )
 }
