@@ -84,11 +84,6 @@ fun ShowGenreCard(
                         .padding(start = 2.dp),
                     alignment = Alignment.CenterEnd
                 )
-//            Image(
-//                painter = painterResource(id = genreCardModel.genrePictureId),
-//                contentDescription = null,
-//                contentScale = ContentScale.Fit
-//            )
             }
             Box(
                 modifier = Modifier.fillMaxSize(),

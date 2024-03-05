@@ -41,6 +41,9 @@ val GenreTypeTextSize = 15.sp
 
 val NextButtonTextSize = 20.sp
 
+val CongratulationsHeaderTextSize = 35.sp
+val CongratulationsDescriptionTextSize = 28.sp
+
 val WelcomeScreenHeaderTextStyle = TextStyle(
     fontFamily = ViburFontFamily,
     fontWeight = FontWeight.Bold,
@@ -148,4 +151,19 @@ val NextButtonTextStyle = TextStyle(
     fontSize = NextButtonTextSize,
     color = BackgroundColor,
 )
+
+val CongratulationsHeaderTextStyle = TextStyle(
+    fontFamily = UrbanistFontFamily,
+    fontWeight = FontWeight.ExtraBold,
+    fontSize = CongratulationsHeaderTextSize,
+    color = BackgroundColor,
+)
+
+val CongratulationsDescriptionTextStyle = TextStyle(
+    fontFamily = UrbanistFontFamily,
+    fontWeight = FontWeight.ExtraBold,
+    fontSize = CongratulationsDescriptionTextSize,
+    color = BackgroundColor,
+)
+
 

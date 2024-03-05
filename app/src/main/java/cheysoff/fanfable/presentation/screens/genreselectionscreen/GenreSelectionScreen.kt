@@ -3,7 +3,6 @@ package cheysoff.fanfable.presentation.screens.genreselectionscreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -12,14 +11,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,18 +23,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import cheysoff.fanfable.R
+import cheysoff.fanfable.presentation.screens.loginscreen.components.NextButtonBottomBar
 import cheysoff.fanfable.presentation.screens.theme.BackgroundColor
-import cheysoff.fanfable.presentation.screens.theme.NextButtonActiveGradientList
-import cheysoff.fanfable.presentation.screens.theme.NextButtonInActiveGradientList
-import cheysoff.fanfable.presentation.screens.theme.NextButtonTextStyle
 import cheysoff.fanfable.presentation.screens.theme.ScreenElementsColor
 import cheysoff.fanfable.presentation.screens.theme.SelectGenreHeaderTextStyle
 
@@ -80,27 +70,10 @@ fun GenreSelectionScreen(state: GenreScreenState) {
 
         },
         bottomBar = {
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp),
-                color = ScreenElementsColor
-            ) {
-                GradientButton(
-                    onClick = { /* Handle button click */ },
-                    enabled = isButtonEnabled,
-                    modifier = Modifier
-                        .padding(horizontal = 25.dp, vertical = 30.dp)
-                        .fillMaxSize(),
-                    colors = if (isButtonEnabled) NextButtonActiveGradientList else NextButtonInActiveGradientList
-                ) {
-                    Text(
-                        text = "Next",
-                        style = NextButtonTextStyle,
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
+            NextButtonBottomBar(
+                isButtonEnabled = isButtonEnabled,
+                buttonText = "Next"
+            )
         }
     ) {
         if (state.isLoading) {
@@ -150,33 +123,4 @@ fun GenreSelectionScreen(state: GenreScreenState) {
         }
     }
 
-}
-
-@Composable
-fun GradientButton(
-    onClick: () -> Unit,
-    enabled: Boolean,
-    modifier: Modifier = Modifier,
-    colors: List<Color>,
-    content: @Composable RowScope.() -> Unit
-) {
-    Button(
-        onClick = onClick,
-        enabled = enabled,
-        modifier = modifier
-            .shadow(
-                elevation = 4.dp,
-                shape = RoundedCornerShape(42.dp)
-            )
-            .clip(RoundedCornerShape(42.dp))
-            .background(
-                brush = Brush.verticalGradient(colors = colors),
-                shape = RoundedCornerShape(42.dp)
-            ),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = Color.Transparent,
-            disabledContentColor = Color.Transparent
-        ),
-        content = content
-    )
 }
