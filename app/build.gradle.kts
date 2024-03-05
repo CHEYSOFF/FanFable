@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "cheysoff.fanfable"
+    namespace = "cheysoff.onlyfanf"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "cheysoff.fanfable"
+        applicationId = "cheysoff.onlyfanf"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
