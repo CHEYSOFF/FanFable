@@ -30,3 +30,7 @@ settings.gradle.kts
 .idea/gradle.xml
 .idea/inspectionProfiles/Project_Default.xml
 app/google-services.json
+design-system/proguard-rules.pro
+design-system/consumer-rules.pro
+design-system/proguard-rules.pro
+*.pro

@@ -28,7 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import cheysoff.onlyfanf.R
-import cheysoff.onlyfanf.presentation.screens.loginscreen.components.NextButtonBottomBar
+import cheysoff.onlyfanf.presentation.screens.genreselectionscreen.components.NextButtonBottomBar
 import cheysoff.onlyfanf.presentation.screens.theme.BackgroundColor
 import cheysoff.onlyfanf.presentation.screens.theme.ScreenElementsColor
 import cheysoff.onlyfanf.presentation.screens.theme.SelectGenreHeaderTextStyle

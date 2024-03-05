@@ -1,4 +1,4 @@
-package cheysoff.onlyfanf.presentation.screens.loginscreen
+package cheysoff.onlyfanf.presentation.screens.genreselectionscreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,7 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cheysoff.onlyfanf.R
-import cheysoff.onlyfanf.presentation.screens.loginscreen.components.NextButtonBottomBar
+import cheysoff.onlyfanf.presentation.screens.genreselectionscreen.components.NextButtonBottomBar
 import cheysoff.onlyfanf.presentation.screens.theme.CongratulationsDescriptionTextStyle
 import cheysoff.onlyfanf.presentation.screens.theme.CongratulationsHeaderTextStyle
 import cheysoff.onlyfanf.presentation.screens.theme.ScreenElementsColor

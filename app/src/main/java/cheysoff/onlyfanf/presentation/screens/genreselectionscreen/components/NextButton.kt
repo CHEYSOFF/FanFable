@@ -1,4 +1,4 @@
-package cheysoff.onlyfanf.presentation.screens.loginscreen.components
+package cheysoff.onlyfanf.presentation.screens.genreselectionscreen.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.RowScope
