@@ -4,8 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import cheysoff.onlyfanf.presentation.screens.genreselectionscreen.GenreSelectionScreen
-import cheysoff.onlyfanf.presentation.screens.genreselectionscreen.GenreSelectionViewModel
+import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.GenreSelectionScreen
+import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.GenreSelectionViewModel
+import cheysoff.onlyfanf.presentation.screens.theme.MyApplicationTheme
 import com.google.firebase.FirebaseApp
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +22,9 @@ class MainActivity : ComponentActivity() {
         viewModel.loadGenreInfo()
 
         setContent {
-            GenreSelectionScreen(state = viewModel.state)
+            MyApplicationTheme {
+                GenreSelectionScreen(state = viewModel.state)
+            }
         }
 
         /*

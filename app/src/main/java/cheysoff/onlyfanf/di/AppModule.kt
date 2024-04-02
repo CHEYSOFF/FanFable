@@ -1,7 +1,7 @@
 package cheysoff.onlyfanf.di
 
-import cheysoff.onlyfanf.data.remote.CloudDataSource
-import cheysoff.onlyfanf.data.remote.FirebaseCloudDataSource
+import cheysoff.onlyfanf.genre_selection_data.data.remote.CloudDataSource
+import cheysoff.onlyfanf.genre_selection_data.data.remote.FirebaseCloudDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

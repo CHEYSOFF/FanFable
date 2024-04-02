@@ -38,18 +38,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cheysoff.onlyfanf.R
-import cheysoff.onlyfanf.presentation.screens.theme.ActiveButtonColor
 import cheysoff.onlyfanf.presentation.screens.theme.BackgroundColor
 import cheysoff.onlyfanf.presentation.screens.theme.ContinueWithoutRegistrationTextStyle
 import cheysoff.onlyfanf.presentation.screens.theme.HaveAccountLogInTextStyle
 import cheysoff.onlyfanf.presentation.screens.theme.HaveAccountTextStyle
-import cheysoff.onlyfanf.presentation.screens.theme.InactiveButtonColor
-import cheysoff.onlyfanf.presentation.screens.theme.LoginFieldColor
+import cheysoff.onlyfanf.presentation.screens.theme.LocalCustomColorScheme
 import cheysoff.onlyfanf.presentation.screens.theme.LoginFieldPlaceHolderTextStyle
 import cheysoff.onlyfanf.presentation.screens.theme.LoginFieldTextStyle
 import cheysoff.onlyfanf.presentation.screens.theme.Peach
 import cheysoff.onlyfanf.presentation.screens.theme.RegistrationOrTextStyle
-import cheysoff.onlyfanf.presentation.screens.theme.ScreenElementsColor
 import cheysoff.onlyfanf.presentation.screens.theme.SignUpButtonTextStyle
 import cheysoff.onlyfanf.presentation.screens.theme.WelcomeScreenHeaderTextStyle
 import cheysoff.onlyfanf.presentation.screens.welcomescreen.components.ThreePartsScreen
@@ -107,7 +104,7 @@ fun RegistrationScreen() {
                     .padding(top = 33.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                val buttonColor = if (isButtonActive) ActiveButtonColor else InactiveButtonColor
+                val buttonColor = if (isButtonActive) LocalCustomColorScheme.current.activeButtonColor else LocalCustomColorScheme.current.inactiveButtonColor
                 Button(
                     modifier = Modifier.size(height = 49.dp, width = 129.dp),
                     enabled = isButtonActive,
@@ -117,10 +114,10 @@ fun RegistrationScreen() {
                         width = 4.dp,
                         color = buttonColor
                     ),
-                    colors = ButtonDefaults.buttonColors(containerColor = BackgroundColor,
-                        contentColor = ActiveButtonColor,
+                    colors = ButtonDefaults.buttonColors(containerColor = LocalCustomColorScheme.current.backgroundColor,
+                        contentColor = LocalCustomColorScheme.current.activeButtonColor,
                         disabledContainerColor = BackgroundColor,
-                        disabledContentColor = InactiveButtonColor)
+                        disabledContentColor = LocalCustomColorScheme.current.inactiveButtonColor)
                 ) {
                     Text(
                         text = "Sign up",
@@ -139,7 +136,7 @@ fun RegistrationScreen() {
                 Text(
                     modifier = Modifier
                         .padding(top = 14.dp)
-                        .drawBehind(strokeWidthPx = 7f, linePadding = 2f, color = ScreenElementsColor)
+                        .drawBehind(strokeWidthPx = 7f, linePadding = 2f, color = LocalCustomColorScheme.current.screenElementsColor)
                         .clickable {  },
                     text = "Continue without an account",
                     style = ContinueWithoutRegistrationTextStyle
@@ -185,8 +182,8 @@ private fun BasicTextField(onValueChange: (String) -> Unit, textFieldType: TextF
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = Color.Transparent,
             unfocusedBorderColor = Color.Transparent,
-            focusedContainerColor = LoginFieldColor,
-            unfocusedContainerColor = LoginFieldColor
+            focusedContainerColor = LocalCustomColorScheme.current.loginFieldColor,
+            unfocusedContainerColor = LocalCustomColorScheme.current.loginFieldColor
         ),
 
         shape = RoundedCornerShape(12.dp),
@@ -215,7 +212,7 @@ private fun BasicTextField(onValueChange: (String) -> Unit, textFieldType: TextF
                         Icon(
                             painter = painterResource(id = image),
                             contentDescription = description,
-                            tint = ScreenElementsColor
+                            tint = LocalCustomColorScheme.current.screenElementsColor
                         )
                     }
                 }

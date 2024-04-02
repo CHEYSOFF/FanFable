@@ -16,8 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import cheysoff.onlyfanf.R
-import cheysoff.onlyfanf.presentation.screens.theme.BackgroundColor
-import cheysoff.onlyfanf.presentation.screens.theme.ScreenElementsColor
+import cheysoff.onlyfanf.presentation.screens.theme.LocalCustomColorScheme
 
 @Composable
 fun BottomNextButtonScreen(
@@ -36,11 +35,11 @@ fun BottomNextButtonScreen(
             ) {
                 Surface(
                     shape = CircleShape,
-                    color = ScreenElementsColor
+                    color = LocalCustomColorScheme.current.screenElementsColor
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.arrow_next_button),
-                        tint = BackgroundColor,
+                        tint = LocalCustomColorScheme.current.backgroundColor,
                         contentDescription = null
                     )
                 }
@@ -59,7 +58,7 @@ fun ThreePartsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BackgroundColor),
+            .background(LocalCustomColorScheme.current.backgroundColor),
         horizontalAlignment = Alignment.CenterHorizontally,
 
 

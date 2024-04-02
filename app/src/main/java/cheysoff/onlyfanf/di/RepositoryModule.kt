@@ -1,7 +1,7 @@
 package cheysoff.onlyfanf.di
 
-import cheysoff.onlyfanf.data.repository.CloudRepositoryImpl
-import cheysoff.onlyfanf.domain.repository.CloudRepository
+import cheysoff.onlyfanf.genre_selection_data.data.repository.CloudRepositoryImpl
+import cheysoff.onlyfanf.genre_selection_domain.repository.CloudRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

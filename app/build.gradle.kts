@@ -64,5 +64,9 @@ dependencies {
     hilt()
     firebase()
     coil()
+    implementation(project(":genre_selection_ui"))
+    implementation(project(":genre_selection_domain"))
+
+    implementation(project(":genre_selection_data"))
 
 }

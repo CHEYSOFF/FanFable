@@ -8,7 +8,7 @@ object Versions {
     const val hilt = "2.48"
 
     const val firebaseStorage = "20.3.0"
-    const val firebaseBom = "32.7.3"
+    const val firebaseBom = "32.8.0"
     const val firebaseFirestore = "24.10.3"
     
     const val CoilCompose = "2.6.0"

@@ -31,12 +31,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import cheysoff.onlyfanf.presentation.screens.NavigationItem
-import cheysoff.onlyfanf.presentation.screens.welcomescreen.components.BottomNextButtonScreen
 import cheysoff.onlyfanf.presentation.screens.theme.HiHeaderTextStyle
-import cheysoff.onlyfanf.presentation.screens.theme.ScreenElementsColor
-import cheysoff.onlyfanf.presentation.screens.theme.UserChooserEvenCardBackgroundColor
-import cheysoff.onlyfanf.presentation.screens.theme.UserChooserOddCardBackgroundColor
+import cheysoff.onlyfanf.presentation.screens.theme.LocalCustomColorScheme
 import cheysoff.onlyfanf.presentation.screens.theme.WelcomeScreenChooseUserChooserTextStyle
+import cheysoff.onlyfanf.presentation.screens.welcomescreen.components.BottomNextButtonScreen
 
 @Composable
 fun ShowUserPickerScreen(navController: NavController, onClick: (UserType) -> Unit) {
@@ -80,9 +78,9 @@ private fun OptionsList(chosenOption: UserType, onSelected: (UserType) -> Unit) 
                 isSelected = option == chosenOption,
                 rowBackgroundColor =
                 if (index % 2 == 1)
-                    UserChooserOddCardBackgroundColor
+                    LocalCustomColorScheme.current.userChooserOddCardBackgroundColor
                 else
-                    UserChooserEvenCardBackgroundColor,
+                    LocalCustomColorScheme.current.userChooserEvenCardBackgroundColor,
                 onSelected = onSelected
             )
         }
@@ -122,7 +120,7 @@ private fun OptionItem(
                     .clip(CircleShape)
                     .size(20.dp)
                     .background(rowBackgroundColor)
-                    .border(3.dp, ScreenElementsColor, CircleShape)
+                    .border(3.dp, LocalCustomColorScheme.current.screenElementsColor, CircleShape)
                     .padding(5.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -130,7 +128,7 @@ private fun OptionItem(
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         shape = CircleShape,
-                        color = ScreenElementsColor
+                        color = LocalCustomColorScheme.current.screenElementsColor
                     ) {}
                 }
             }

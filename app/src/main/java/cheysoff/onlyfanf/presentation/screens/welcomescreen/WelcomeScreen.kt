@@ -11,10 +11,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import cheysoff.onlyfanf.R
 import cheysoff.onlyfanf.presentation.screens.NavigationItem
-import cheysoff.onlyfanf.presentation.screens.welcomescreen.components.BottomNextButtonScreen
-import cheysoff.onlyfanf.presentation.screens.theme.ScreenElementsColor
+import cheysoff.onlyfanf.presentation.screens.theme.LocalCustomColorScheme
 import cheysoff.onlyfanf.presentation.screens.theme.WelcomeScreenDescriptionTextStyle
 import cheysoff.onlyfanf.presentation.screens.theme.WelcomeScreenHeaderTextStyle
+import cheysoff.onlyfanf.presentation.screens.welcomescreen.components.BottomNextButtonScreen
 
 @Composable
 fun ShowWelcomeScreen(navController: NavController) {
@@ -33,7 +33,7 @@ fun ShowWelcomeScreen(navController: NavController) {
 
                 Icon(
                     painter = painterResource(id = R.drawable.book_icon),
-                    tint = ScreenElementsColor,
+                    tint = LocalCustomColorScheme.current.screenElementsColor,
                     contentDescription = null
                 )
 

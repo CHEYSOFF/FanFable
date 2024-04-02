@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "468364375360",
+    "firebase_url": "https://fanfable-17a87-default-rtdb.firebaseio.com",
+    "project_id": "fanfable-17a87",
+    "storage_bucket": "fanfable-17a87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468364375360:android:ccf1a5a48858b3fc90b6a5",
+        "android_client_info": {
+          "package_name": "cheysoff.onlyfanf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfjtz0OePj1s_aKAQ1IS2JuUCSiZKybq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468364375360:android:8dcabdeb5af5424890b6a5",
+        "android_client_info": {
+          "package_name": "cheysoff.onlyfanf.genre_selection_data"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfjtz0OePj1s_aKAQ1IS2JuUCSiZKybq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
