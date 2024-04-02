@@ -27,10 +27,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import cheysoff.onlyfanf.design_system.theme.LocalCustomColorScheme
+import cheysoff.onlyfanf.design_system.theme.SelectGenreHeaderTextStyle
 import cheysoff.onlyfanf.genre_selection_ui.R
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.components.NextButtonBottomBar
-import cheysoff.onlyfanf.presentation.screens.theme.LocalCustomColorScheme
-import cheysoff.onlyfanf.presentation.screens.theme.SelectGenreHeaderTextStyle
 
 //@Preview
 @Composable

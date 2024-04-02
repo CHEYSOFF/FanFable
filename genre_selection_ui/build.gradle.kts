@@ -55,5 +55,8 @@ dependencies {
     compose()
     coil()
     hilt()
+
     implementation(project(":genre_selection_domain"))
+    implementation(project(":navigation"))
+    implementation(project(":design_system"))
 }

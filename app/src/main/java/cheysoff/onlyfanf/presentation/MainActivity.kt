@@ -4,9 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.GenreSelectionScreen
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import cheysoff.onlyfanf.NavigationItem
+import cheysoff.onlyfanf.components.BottomBar
+import cheysoff.onlyfanf.components.BottomBarItem
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.GenreSelectionViewModel
-import cheysoff.onlyfanf.presentation.screens.theme.MyApplicationTheme
+import cheysoff.onlyfanf.welcomescreen.ShowUserPickerScreen
+import cheysoff.onlyfanf.welcomescreen.ShowWelcomeScreen
+import cheysoff.onlyfanf.welcomescreen.UserType
 import com.google.firebase.FirebaseApp
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,13 +28,13 @@ class MainActivity : ComponentActivity() {
         FirebaseApp.initializeApp(this)
         viewModel.loadGenreInfo()
 
-        setContent {
-            MyApplicationTheme {
-                GenreSelectionScreen(state = viewModel.state)
-            }
-        }
+//        setContent {
+//            MyApplicationTheme {
+//                GenreSelectionScreen(state = viewModel.state)
+//            }
+//        }
 
-        /*
+
         setContent {
             val navController = rememberNavController()
             var userType = UserType.READER
@@ -65,7 +72,7 @@ class MainActivity : ComponentActivity() {
 //                }
             }
         }
-    */
+
 
     }
 

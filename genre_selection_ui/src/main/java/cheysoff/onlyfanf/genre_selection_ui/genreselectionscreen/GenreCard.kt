@@ -24,10 +24,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import cheysoff.onlyfanf.design_system.theme.GenreTypeTextStyle
+import cheysoff.onlyfanf.design_system.theme.LocalCustomColorScheme
 import cheysoff.onlyfanf.genre_selection_domain.model.GenreModel
 import cheysoff.onlyfanf.genre_selection_ui.R
-import cheysoff.onlyfanf.presentation.screens.theme.GenreTypeTextStyle
-import cheysoff.onlyfanf.presentation.screens.theme.LocalCustomColorScheme
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 

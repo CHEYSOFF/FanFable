@@ -16,11 +16,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import cheysoff.onlyfanf.design_system.theme.CongratulationsDescriptionTextStyle
+import cheysoff.onlyfanf.design_system.theme.CongratulationsHeaderTextStyle
+import cheysoff.onlyfanf.design_system.theme.LocalCustomColorScheme
 import cheysoff.onlyfanf.genre_selection_ui.R
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.components.NextButtonBottomBar
-import cheysoff.onlyfanf.presentation.screens.theme.CongratulationsDescriptionTextStyle
-import cheysoff.onlyfanf.presentation.screens.theme.CongratulationsHeaderTextStyle
-import cheysoff.onlyfanf.presentation.screens.theme.LocalCustomColorScheme
 
 @Preview
 @Composable
