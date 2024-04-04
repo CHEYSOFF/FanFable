@@ -1,4 +1,4 @@
-package cheysoff.onlyfanf.welcomescreen
+package cheysoff.onlyfanf.welcomescreen.screens.welcomescreen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,8 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import cheysoff.onlyfanf.NavigationItem
 import cheysoff.onlyfanf.design_system.R.drawable.book_icon
 import cheysoff.onlyfanf.design_system.components.BottomNextButtonScreen
 import cheysoff.onlyfanf.design_system.theme.LocalCustomColorScheme
@@ -17,7 +15,7 @@ import cheysoff.onlyfanf.design_system.theme.WelcomeScreenDescriptionTextStyle
 import cheysoff.onlyfanf.design_system.theme.WelcomeScreenHeaderTextStyle
 
 @Composable
-fun ShowWelcomeScreen(navController: NavController) {
+fun ShowWelcomeScreen(onIntentReceived: (WelcomeScreenIntent) -> Unit) {
     BottomNextButtonScreen(
         topComposable = {
             Text(
@@ -40,7 +38,7 @@ fun ShowWelcomeScreen(navController: NavController) {
                 Text(text = "Welcome to OnlyFanf", style = WelcomeScreenDescriptionTextStyle)
             }
         },
-        nextButtonOnClick = { navController.navigate(NavigationItem.UserPicker.route) }
+        nextButtonOnClick = { onIntentReceived(WelcomeScreenIntent.PressNextButtonIntent) }
     )
 }
 

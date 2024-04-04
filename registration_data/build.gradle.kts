@@ -2,12 +2,19 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp") version "1.9.21-1.0.15"
-    id("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
     namespace = "cheysoff.onlyfanf"
     compileSdk = 34
+
+    defaultConfig {
+        minSdk = 24
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
 
     buildTypes {
         release {
@@ -25,12 +32,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
 }
 
 dependencies {
@@ -42,15 +43,8 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    compose()
-    coil()
     hilt()
-
     implementation("com.google.firebase:firebase-auth:22.3.1")
-    
-
-    implementation(project(":navigation"))
-    implementation(project(":design_system"))
     implementation(project(":registration_domain"))
 
 }

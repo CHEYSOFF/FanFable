@@ -65,12 +65,18 @@ dependencies {
     firebase()
     coil()
 
-    implementation(project(":genre_selection_ui"))
     implementation(project(":welcome_ui"))
+    
     implementation(project(":feed_ui"))
+
     implementation(project(":registration_ui"))
+    implementation(project(":registration_domain"))
+    implementation(project(":registration_data"))
+
+    implementation(project(":genre_selection_ui"))
     implementation(project(":genre_selection_domain"))
     implementation(project(":genre_selection_data"))
+
     implementation(project(":navigation"))
     implementation(project(":design_system"))
 }

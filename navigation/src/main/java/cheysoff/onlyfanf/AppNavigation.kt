@@ -1,17 +1,17 @@
 package cheysoff.onlyfanf
 
-enum class Screen {
-    StartScreen,
-    UserPicker,
-    Login,
-    Registration,
-    Main
+enum class GlobalScreen {
+    GlobalStart,
+//    UserPicker,
+//    Login,
+    GlobalRegistration,
+    GlobalMain
 }
 
-sealed class NavigationItem(val route: String) {
-    data object StartScreen : NavigationItem(Screen.StartScreen.name)
-    data object UserPicker : NavigationItem(Screen.UserPicker.name)
-    data object Login : NavigationItem(Screen.Login.name)
-    data object Registration : NavigationItem(Screen.Registration.name)
-    data object Main : NavigationItem(Screen.Main.name)
-}
+//sealed class GlobalNavigationItem(val route: String) {
+//    data object GlobalStart : GlobalNavigationItem(GlobalScreen.GlobalStart.name)
+////    data object UserPicker : NavigationItem(Screen.UserPicker.name)
+////    data object Login : NavigationItem(Screen.Login.name)
+//    data object GlobalRegistration : GlobalNavigationItem(GlobalScreen.GlobalRegistration.name)
+//    data object GlobalMain : GlobalNavigationItem(GlobalScreen.GlobalMain.name)
+//}

@@ -1,4 +1,4 @@
-package cheysoff.onlyfanf.welcomescreen
+package cheysoff.onlyfanf.welcomescreen.screens.userpickerscreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,25 +20,22 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import cheysoff.onlyfanf.NavigationItem
+import cheysoff.onlyfanf.design_system.components.BottomNextButtonScreen
 import cheysoff.onlyfanf.design_system.theme.HiHeaderTextStyle
 import cheysoff.onlyfanf.design_system.theme.LocalCustomColorScheme
 import cheysoff.onlyfanf.design_system.theme.WelcomeScreenChooseUserChooserTextStyle
-import cheysoff.onlyfanf.design_system.components.BottomNextButtonScreen
+import cheysoff.onlyfanf.welcomescreen.screens.userpickerscreen.components.UserType
 
 @Composable
-fun ShowUserPickerScreen(navController: NavController, onClick: (UserType) -> Unit) {
-    var selectedUserType by remember { mutableStateOf(UserType.READER) }
+fun ShowUserPickerScreen(
+    state: UserPickerScreenState,
+    onIntentReceived: (UserPickerScreenIntent) -> Unit
+) {
 
     BottomNextButtonScreen(
         topComposable = {
@@ -49,22 +46,19 @@ fun ShowUserPickerScreen(navController: NavController, onClick: (UserType) -> Un
         },
         midComposable = {
             OptionsList(
-                chosenOption = selectedUserType
+                chosenOption = state.userTypeSelected
             ) { newSelectedType ->
-                selectedUserType = newSelectedType
+                onIntentReceived(UserPickerScreenIntent.ChangeUserSelectedIntent(newSelectedType))
             }
         },
         nextButtonOnClick = {
-            onClick(selectedUserType)
-            navController.navigate(NavigationItem.Main.route)
+            onIntentReceived(UserPickerScreenIntent.PressNextButtonIntent)
         }
     )
 }
 
 @Composable
 private fun OptionsList(chosenOption: UserType, onSelected: (UserType) -> Unit) {
-
-
     LazyColumn(
         modifier = Modifier
             .height(120.dp)
@@ -136,10 +130,4 @@ private fun OptionItem(
         }
         Divider()
     }
-}
-
-enum class UserType {
-    WRITER,
-    READER,
-    BOTH,
 }
