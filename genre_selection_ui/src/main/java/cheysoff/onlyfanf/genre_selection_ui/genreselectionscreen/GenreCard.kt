@@ -35,7 +35,7 @@ import coil.request.ImageRequest
 @Composable
 fun ShowGenreCard(
     genreModel: GenreModel,
-    onClick: (Boolean) -> Unit,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var isChosen by rememberSaveable { mutableStateOf(false) }
@@ -46,7 +46,7 @@ fun ShowGenreCard(
         shadowElevation = 5.dp,
         onClick = {
             isChosen = !isChosen
-            onClick(isChosen)
+            onClick()
         }
     ) {
 

@@ -7,6 +7,9 @@ object Versions {
 
     const val hilt = "2.48"
 
+    const val hiltNavigation = "1.2.0"
+    const val androidxNavigation = "2.7.7"
+
     const val firebaseStorage = "20.3.0"
     const val firebaseBom = "32.8.0"
     const val firebaseFirestore = "24.10.3"

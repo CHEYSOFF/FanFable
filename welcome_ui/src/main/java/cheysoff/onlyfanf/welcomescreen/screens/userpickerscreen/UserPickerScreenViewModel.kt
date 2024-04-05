@@ -4,15 +4,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavHostController
-import cheysoff.onlyfanf.StartScreen
+import cheysoff.onlyfanf.NavigationManager
+import cheysoff.onlyfanf.directions.StartNavigation
 import cheysoff.onlyfanf.welcomescreen.screens.userpickerscreen.components.UserType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class UserPickerScreenViewModel @Inject constructor(
-    private val navHostController: NavHostController
+    private val navigationManager: NavigationManager
 ) : ViewModel() {
 
     var state by mutableStateOf(UserPickerScreenState())
@@ -30,7 +30,8 @@ class UserPickerScreenViewModel @Inject constructor(
     }
 
     private fun pressNextButton() {
-        navHostController.navigate(StartScreen.StartGenreSelection.name)
+        navigationManager.navigate(StartNavigation.StartGenreSelection)
+//        navHostController.navigate(StartScreen.StartGenreSelection.name)
     }
 
 }

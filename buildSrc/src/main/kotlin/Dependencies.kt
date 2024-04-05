@@ -16,6 +16,9 @@ object Dependencies {
     const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
 
+    const val androidxNavigation = "androidx.navigation:navigation-compose:${Versions.androidxNavigation}"
+    const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:${Versions.hiltNavigation}"
+
     const val firebaseStorage = "com.google.firebase:firebase-storage:${Versions.firebaseStorage}"
     const val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
     const val firebaseFirestore = "com.google.firebase:firebase-firestore:${Versions.firebaseFirestore}"
@@ -41,6 +44,12 @@ fun DependencyHandler.compose() {
 fun DependencyHandler.hilt() {
     implementation(Dependencies.hiltAndroid)
     ksp(Dependencies.hiltCompiler)
+    implementation(Dependencies.hiltNavigationCompose)
+}
+
+fun DependencyHandler.navigation() {
+    implementation(Dependencies.androidxNavigation)
+    implementation(Dependencies.hiltNavigationCompose)
 }
 
 fun DependencyHandler.firebase() {

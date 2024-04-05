@@ -5,6 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import cheysoff.onlyfanf.NavigationManager
+import cheysoff.onlyfanf.directions.StartNavigation
 import cheysoff.onlyfanf.genre_selection_domain.repository.CloudRepository
 import cheysoff.onlyfanf.genre_selection_domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,19 +15,47 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GenreSelectionViewModel @Inject constructor(
+    private val navigationManager: NavigationManager,
     private val repository: CloudRepository,
 ) : ViewModel() {
     var state by mutableStateOf(GenreScreenState())
         private set
 
-    fun loadGenreInfo() {
+    fun processIntent(intent: GenreSelectionScreenIntent) {
+        when (intent) {
+            GenreSelectionScreenIntent.PressNextButtonIntent -> pressNextButton()
+            is GenreSelectionScreenIntent.SelectGenreByIdIntent -> selectGenreById(intent.id)
+            GenreSelectionScreenIntent.LoadGenresInfoIntent -> loadGenreInfo()
+        }
+    }
+
+    private fun pressNextButton() {
+        navigationManager.navigate(StartNavigation.StartCongratulate)
+    }
+
+    private fun selectGenreById(id: String) {
+        if (state.selectedGenresIds.contains(id)) {
+            state.selectedGenresIds.remove(id)
+        } else {
+            state.selectedGenresIds.add(id)
+        }
+        updateButtonAvailability()
+    }
+
+    private fun updateButtonAvailability() {
+        state = state.copy(
+            isButtonAvailable = state.selectedGenresIds.size >= GENRES_MIN_AMOUNT_SELECTED
+        )
+    }
+
+    private fun loadGenreInfo() {
         viewModelScope.launch {
             state = state.copy(
                 isLoading = true,
                 error = null
             )
 
-            when(val result = repository.getDataFromCloud()) {
+            when (val result = repository.getDataFromCloud()) {
                 is Resource.Success -> {
                     state = state.copy(
                         genres = result.data,
@@ -33,6 +63,7 @@ class GenreSelectionViewModel @Inject constructor(
                         error = null
                     )
                 }
+
                 is Resource.Error -> {
                     state = state.copy(
                         genres = null,
@@ -42,5 +73,9 @@ class GenreSelectionViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    companion object {
+        const val GENRES_MIN_AMOUNT_SELECTED = 1;
     }
 }

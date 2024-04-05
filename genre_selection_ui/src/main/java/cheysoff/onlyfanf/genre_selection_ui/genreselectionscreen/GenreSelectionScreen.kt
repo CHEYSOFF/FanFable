@@ -17,10 +17,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,9 +30,10 @@ import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.components.Next
 
 //@Preview
 @Composable
-fun GenreSelectionScreen(state: GenreScreenState) {
-    var isButtonEnabled by rememberSaveable { mutableStateOf(false) }
-    val chosenGenres = mutableSetOf<String>()
+fun ShowGenreSelectionScreen(
+    state: GenreScreenState,
+    onIntentReceived: (GenreSelectionScreenIntent) -> Unit
+) {
 
     Scaffold(
         modifier = Modifier
@@ -70,7 +67,7 @@ fun GenreSelectionScreen(state: GenreScreenState) {
         },
         bottomBar = {
             NextButtonBottomBar(
-                isButtonEnabled = isButtonEnabled,
+                isButtonEnabled = state.isButtonAvailable,
                 buttonText = "Next"
             )
         }
@@ -100,15 +97,13 @@ fun GenreSelectionScreen(state: GenreScreenState) {
                         Modifier
                             .height(110.dp)
                             .fillMaxWidth()
-                    ShowGenreCard(genreModel = genre, { isChosen ->
-                        if (isChosen) {
-                            chosenGenres.add(genre.genreName)
-                        } else {
-                            chosenGenres.remove(genre.genreName)
-                        }
-
-                        isButtonEnabled = chosenGenres.isNotEmpty()
-                    }, modifier = modifier)
+                    ShowGenreCard(
+                        genreModel = genre,
+                        onClick = {
+                            onIntentReceived(GenreSelectionScreenIntent.SelectGenreByIdIntent(genre.id))
+                        },
+                        modifier = modifier
+                    )
                 }
             }
         }

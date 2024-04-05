@@ -4,14 +4,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavHostController
-import cheysoff.onlyfanf.MainScreen
-import cheysoff.onlyfanf.SignScreen
+import cheysoff.onlyfanf.NavigationManager
+import cheysoff.onlyfanf.directions.MainNavigation
+import cheysoff.onlyfanf.directions.SignNavigation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+
 @HiltViewModel
 class RegistrationScreenViewModel @Inject constructor(
-    private val navHostController: NavHostController
+    private val navigationManager: NavigationManager
 ) : ViewModel() {
 
     var state by mutableStateOf(RegistrationScreenState())
@@ -36,11 +37,11 @@ class RegistrationScreenViewModel @Inject constructor(
 
     private fun pressSignUpButton() {
         // TODO - check user
-        navHostController.navigate(MainScreen.MainFeed.name)
+        navigationManager.navigate(MainNavigation.MainFeed)
     }
 
 
     private fun pressSubfieldText() {
-        navHostController.navigate(SignScreen.SignLogin.name)
+        navigationManager.navigate(SignNavigation.SignLogin)
     }
 }

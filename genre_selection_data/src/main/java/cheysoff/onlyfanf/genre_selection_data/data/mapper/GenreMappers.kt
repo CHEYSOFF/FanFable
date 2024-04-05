@@ -6,6 +6,7 @@ import cheysoff.onlyfanf.genre_selection_domain.model.GenreModel
 fun List<GenreDto>.toGenreModelList(): List<GenreModel> {
     return this.map {
         GenreModel(
+            it.id,
             it.genreName,
             it.genrePicturePath
         )

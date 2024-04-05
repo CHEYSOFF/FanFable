@@ -30,7 +30,7 @@ class FirebaseCloudDataSource : CloudDataSource {
                         val downloadTask = storageRef.downloadUrl
 
                         downloadTask.addOnSuccessListener { uri ->
-                            val genreDto = GenreDto(genreName, uri.toString())
+                            val genreDto = GenreDto(document.id, genreName, uri.toString())
                             genreList.add(genreDto)
 
                             if (genreList.size == result.size()) {

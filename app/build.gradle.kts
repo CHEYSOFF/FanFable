@@ -66,7 +66,6 @@ dependencies {
     coil()
 
     implementation(project(":welcome_ui"))
-    
     implementation(project(":feed_ui"))
 
     implementation(project(":registration_ui"))
