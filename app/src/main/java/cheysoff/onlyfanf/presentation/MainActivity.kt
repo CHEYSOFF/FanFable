@@ -12,19 +12,26 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import androidx.navigation.compose.rememberNavController
 import cheysoff.onlyfanf.NavigationCommand
 import cheysoff.onlyfanf.NavigationManager
 import cheysoff.onlyfanf.design_system.theme.MyApplicationTheme
+import cheysoff.onlyfanf.directions.BasicNavigation
 import cheysoff.onlyfanf.directions.MainNavigation
 import cheysoff.onlyfanf.directions.SignNavigation
 import cheysoff.onlyfanf.directions.StartNavigation
-import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.GenreSelectionScreenIntent
-import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.GenreSelectionViewModel
-import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.ShowGenreSelectionScreen
+import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.GenreSelectionScreenIntent
+import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.GenreSelectionViewModel
+import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.ShowGenreSelectionScreen
+import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.registrationcompletescreen.RegistrationCompleteViewModel
+import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.registrationcompletescreen.ShowRegistrationCompleteScreen
+import cheysoff.onlyfanf.screens.loginscreen.LoginScreenViewModel
+import cheysoff.onlyfanf.screens.loginscreen.ShowLoginScreen
+import cheysoff.onlyfanf.screens.registrationscreen.RegistrationScreenViewModel
+import cheysoff.onlyfanf.screens.registrationscreen.ShowRegistrationScreen
 import cheysoff.onlyfanf.welcomescreen.screens.userpickerscreen.ShowUserPickerScreen
 import cheysoff.onlyfanf.welcomescreen.screens.userpickerscreen.UserPickerScreenViewModel
 import cheysoff.onlyfanf.welcomescreen.screens.welcomescreen.ShowWelcomeScreen
@@ -41,25 +48,25 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var navigationManager: NavigationManager
 
+    @Inject
+    lateinit var navController: NavHostController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         FirebaseApp.initializeApp(this)
-//        viewModel.loadGenreInfo()
-
-//        setContent {
-//            MyApplicationTheme {
-//                GenreSelectionScreen(state = viewModel.state)
-//            }
-//        }
 
 
         setContent {
             MyApplicationTheme {
-                val navController = rememberNavController()
+//                val navController = rememberNavController()
                 navigationManager.commands.collectAsState().value.also { command: NavigationCommand ->
-                    if (command.destination.isNotEmpty()) {
-                        navController.navigate(command.destination)
+                    when (command) {
+                        BasicNavigation.Up -> navController.navigateUp()
+                        else ->
+                            if (command.destination.isNotEmpty()) {
+                                navController.navigate(command.destination)
+                            }
                     }
                 }
 
@@ -100,7 +107,12 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                         composable(StartNavigation.StartCongratulate.destination) {
+                            val viewModel =
+                                it.sharedViewModel<RegistrationCompleteViewModel>(navController)
 
+                            ShowRegistrationCompleteScreen { intent ->
+                                viewModel.processIntent(intent)
+                            }
                         }
                     }
 
@@ -109,10 +121,20 @@ class MainActivity : ComponentActivity() {
                         startDestination = SignNavigation.SignRegistration.destination
                     ) {
                         composable(SignNavigation.SignRegistration.destination) {
+                            val viewModel =
+                                it.sharedViewModel<RegistrationScreenViewModel>(navController)
 
+                            ShowRegistrationScreen(viewModel.state) { intent ->
+                                viewModel.processIntent(intent)
+                            }
                         }
                         composable(SignNavigation.SignLogin.destination) {
+                            val viewModel =
+                                it.sharedViewModel<LoginScreenViewModel>(navController)
 
+                            ShowLoginScreen(viewModel.state) { intent ->
+                                viewModel.processIntent(intent)
+                            }
                         }
                         composable(SignNavigation.SignForgotPassword.destination) {
 

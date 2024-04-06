@@ -1,4 +1,4 @@
-package cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen
+package cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,11 +26,16 @@ class GenreSelectionViewModel @Inject constructor(
             GenreSelectionScreenIntent.PressNextButtonIntent -> pressNextButton()
             is GenreSelectionScreenIntent.SelectGenreByIdIntent -> selectGenreById(intent.id)
             GenreSelectionScreenIntent.LoadGenresInfoIntent -> loadGenreInfo()
+            GenreSelectionScreenIntent.PressBackButtonIntent -> pressBackButton()
         }
     }
 
     private fun pressNextButton() {
         navigationManager.navigate(StartNavigation.StartCongratulate)
+    }
+
+    private fun pressBackButton() {
+        navigationManager.navigateUp()
     }
 
     private fun selectGenreById(id: String) {

@@ -3,13 +3,13 @@ package cheysoff.onlyfanf.design_system.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,22 +28,20 @@ fun BottomNextButtonScreen(
         topComposable = topComposable,
         midComposable = midComposable,
         bottomComposable = {
-            IconButton(
+            Button(
                 onClick = nextButtonOnClick,
                 modifier = Modifier
                     .size(60.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = LocalCustomColorScheme.current.screenElementsColor
+                ),
+                contentPadding = PaddingValues(0.dp)
             ) {
-                Surface(
-                    shape = CircleShape,
-                    color = LocalCustomColorScheme.current.screenElementsColor
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.arrow_next_button),
-                        tint = LocalCustomColorScheme.current.backgroundColor,
-                        contentDescription = null
-                    )
-                }
-
+                Icon(
+                    painter = painterResource(id = R.drawable.arrow_next_button),
+                    tint = LocalCustomColorScheme.current.backgroundColor,
+                    contentDescription = null
+                )
             }
         }
     )

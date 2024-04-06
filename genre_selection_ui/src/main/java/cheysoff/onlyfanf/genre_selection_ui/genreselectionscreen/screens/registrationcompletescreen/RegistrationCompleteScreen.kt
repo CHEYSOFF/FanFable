@@ -1,4 +1,4 @@
-package cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen
+package cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.registrationcompletescreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cheysoff.onlyfanf.design_system.theme.CongratulationsDescriptionTextStyle
 import cheysoff.onlyfanf.design_system.theme.CongratulationsHeaderTextStyle
@@ -22,9 +21,8 @@ import cheysoff.onlyfanf.design_system.theme.LocalCustomColorScheme
 import cheysoff.onlyfanf.genre_selection_ui.R
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.components.NextButtonBottomBar
 
-@Preview
 @Composable
-fun RegistrationCompleteScreen() {
+fun ShowRegistrationCompleteScreen(onIntentReceived: (RegistrationCompleteScreenIntent) -> Unit) {
 
     Scaffold(
         modifier = Modifier
@@ -36,7 +34,8 @@ fun RegistrationCompleteScreen() {
         bottomBar = {
             NextButtonBottomBar(
                 isButtonEnabled = true,
-                buttonText = "Let's start"
+                buttonText = "Let's start",
+                onClick = { onIntentReceived(RegistrationCompleteScreenIntent.PressNextButtonIntent) }
             )
         }
     )

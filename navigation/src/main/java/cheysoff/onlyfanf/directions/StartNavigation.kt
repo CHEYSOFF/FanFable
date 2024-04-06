@@ -13,14 +13,6 @@ object StartNavigation {
 
     }
 
-    val Default = object : NavigationCommand {
-
-        override val arguments = emptyList<NamedNavArgument>()
-
-        override val destination = ""
-
-    }
-
     val StartWelcome = object : NavigationCommand {
 
         override val arguments = emptyList<NamedNavArgument>()

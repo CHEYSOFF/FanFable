@@ -23,7 +23,7 @@ import cheysoff.onlyfanf.design_system.theme.LocalCustomColorScheme
 import cheysoff.onlyfanf.design_system.theme.NextButtonTextStyle
 
 @Composable
-fun NextButtonBottomBar(isButtonEnabled: Boolean, buttonText: String) {
+fun NextButtonBottomBar(isButtonEnabled: Boolean, buttonText: String, onClick: () -> Unit) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -31,7 +31,7 @@ fun NextButtonBottomBar(isButtonEnabled: Boolean, buttonText: String) {
         color = LocalCustomColorScheme.current.screenElementsColor
     ) {
         NextButton(
-            onClick = { /*TODO*/ },
+            onClick = onClick,
             enabled = isButtonEnabled,
             buttonText = buttonText
         )

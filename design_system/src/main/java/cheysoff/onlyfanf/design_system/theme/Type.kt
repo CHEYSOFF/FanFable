@@ -43,7 +43,7 @@ val GenreTypeTextSize = 15.sp
 val NextButtonTextSize = 20.sp
 
 val CongratulationsHeaderTextSize = 35.sp
-val CongratulationsDescriptionTextSize = 28.sp
+val CongratulationsDescriptionTextSize = 24.sp
 
 val WelcomeScreenHeaderTextStyle = TextStyle(
     fontFamily = ViburFontFamily,

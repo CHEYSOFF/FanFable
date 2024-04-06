@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import cheysoff.onlyfanf.screens.components.SignScreen
 
 @Composable
-fun RegistrationScreen(state: RegistrationScreenState, onIntentReceived: (RegistrationScreenIntent) -> Unit) {
+fun ShowRegistrationScreen(state: RegistrationScreenState, onIntentReceived: (RegistrationScreenIntent) -> Unit) {
     SignScreen(
         subfieldText = "Already have an account?",
         subfieldClickableText = "Log in",

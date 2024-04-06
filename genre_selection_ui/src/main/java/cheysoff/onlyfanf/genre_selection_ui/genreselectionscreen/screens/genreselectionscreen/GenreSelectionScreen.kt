@@ -1,8 +1,9 @@
-package cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen
+package cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -11,9 +12,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,6 +29,7 @@ import cheysoff.onlyfanf.design_system.theme.LocalCustomColorScheme
 import cheysoff.onlyfanf.design_system.theme.SelectGenreHeaderTextStyle
 import cheysoff.onlyfanf.genre_selection_ui.R
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.components.NextButtonBottomBar
+import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.components.ShowGenreCard
 
 //@Preview
 @Composable
@@ -43,12 +46,18 @@ fun ShowGenreSelectionScreen(
         containerColor = Color.Transparent,
         topBar = {
             Box(modifier = Modifier.padding(bottom = 14.dp)) {
-                IconButton(
+                Button(
                     modifier = Modifier
                         .padding(top = 8.dp)
-                        .size(height = 18.dp, width = 9.dp),
-                    onClick = { /*TODO*/ }) {
+                        .size(30.dp),
+                    onClick = { onIntentReceived(GenreSelectionScreenIntent.PressBackButtonIntent) },
+                    contentPadding = PaddingValues(0.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Transparent
+                    ),
+                ) {
                     Icon(
+                        modifier = Modifier.size(height = 18.dp, width = 9.dp),
                         painter = painterResource(id = R.drawable.return_back_button_icon),
                         contentDescription = null,
                         tint = Color.White
@@ -68,7 +77,8 @@ fun ShowGenreSelectionScreen(
         bottomBar = {
             NextButtonBottomBar(
                 isButtonEnabled = state.isButtonAvailable,
-                buttonText = "Next"
+                buttonText = "Next",
+                onClick = { onIntentReceived(GenreSelectionScreenIntent.PressNextButtonIntent) }
             )
         }
     ) {

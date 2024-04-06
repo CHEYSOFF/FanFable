@@ -1,4 +1,4 @@
-package cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen
+package cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
