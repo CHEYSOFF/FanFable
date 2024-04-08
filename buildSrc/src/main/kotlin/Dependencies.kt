@@ -22,6 +22,7 @@ object Dependencies {
     const val firebaseStorage = "com.google.firebase:firebase-storage:${Versions.firebaseStorage}"
     const val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
     const val firebaseFirestore = "com.google.firebase:firebase-firestore:${Versions.firebaseFirestore}"
+    const val firebaseAuth = "com.google.firebase:firebase-auth:${Versions.firebaseAuth}"
 
     const val coilCompose = "io.coil-kt:coil-compose:${Versions.CoilCompose}"
 }
@@ -52,10 +53,14 @@ fun DependencyHandler.navigation() {
     implementation(Dependencies.hiltNavigationCompose)
 }
 
-fun DependencyHandler.firebase() {
+fun DependencyHandler.firebaseStorage() {
     implementation(Dependencies.firebaseStorage)
     implementation(platform(Dependencies.firebaseBom))
     implementation(Dependencies.firebaseFirestore)
+}
+
+fun DependencyHandler.firebaseAuth() {
+    implementation(Dependencies.firebaseAuth)
 }
 
 fun DependencyHandler.coil() {

@@ -13,7 +13,8 @@ object Versions {
     const val firebaseStorage = "20.3.0"
     const val firebaseBom = "32.8.0"
     const val firebaseFirestore = "24.10.3"
-    
+    const val firebaseAuth = "22.3.1"
+
     const val CoilCompose = "2.6.0"
 
 }

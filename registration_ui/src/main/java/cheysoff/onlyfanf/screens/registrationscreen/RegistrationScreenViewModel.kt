@@ -4,15 +4,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import cheysoff.onlyfanf.NavigationManager
 import cheysoff.onlyfanf.directions.MainNavigation
 import cheysoff.onlyfanf.directions.SignNavigation
+import cheysoff.onlyfanf.repository.AuthRepository
+import cheysoff.onlyfanf.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class RegistrationScreenViewModel @Inject constructor(
-    private val navigationManager: NavigationManager
+    private val navigationManager: NavigationManager,
+    private val repository: AuthRepository
 ) : ViewModel() {
 
     var state by mutableStateOf(RegistrationScreenState())
@@ -36,8 +42,27 @@ class RegistrationScreenViewModel @Inject constructor(
     }
 
     private fun pressSignUpButton() {
-        // TODO - check user
-        navigationManager.navigate(MainNavigation.MainFeed)
+        state = state.copy(loading = true)
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val result = repository.firebaseSignUpWithEmailAndPassword(
+                state.emailText,
+                state.passwordText
+            )) {
+                is Resource.Error -> state = state.copy(
+                    loading = false,
+                    error = result.message
+                )
+
+                is Resource.Success -> {
+                    state = state.copy(
+                        loading = false,
+                        error = ""
+                    )
+                    navigationManager.navigate(MainNavigation.MainFeed)
+                }
+            }
+        }
+
     }
 
 

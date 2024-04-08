@@ -62,7 +62,8 @@ dependencies {
 
     compose()
     hilt()
-    firebase()
+    firebaseStorage()
+    firebaseAuth()
     coil()
 
     implementation(project(":welcome_ui"))

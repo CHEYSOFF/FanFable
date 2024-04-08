@@ -1,20 +1,29 @@
 package cheysoff.onlyfanf
 
 import cheysoff.onlyfanf.directions.BasicNavigation
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.launch
 
-class NavigationManager {
+class NavigationManager(private val externalScope: CoroutineScope) {
 
-    var commands = MutableStateFlow<NavigationCommand>(BasicNavigation.Default)
+    var commands = MutableSharedFlow<NavigationCommand>()
 
     fun navigate(
         directions: NavigationCommand
     ) {
-        commands.value = directions
+        externalScope.launch {
+            commands.emit(directions)
+        }
+//        commands.tryEmit(directions)
+//        commands.value = directions
     }
 
     fun navigateUp() {
-        commands.value = BasicNavigation.Up
+        externalScope.launch {
+            commands.emit(BasicNavigation.Up)
+        }
+//        commands.value = BasicNavigation.Up
     }
 
 }

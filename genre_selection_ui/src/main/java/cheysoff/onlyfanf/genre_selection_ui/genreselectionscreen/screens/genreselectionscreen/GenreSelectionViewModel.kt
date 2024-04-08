@@ -21,6 +21,10 @@ class GenreSelectionViewModel @Inject constructor(
     var state by mutableStateOf(GenreScreenState())
         private set
 
+    init {
+        processIntent(GenreSelectionScreenIntent.LoadGenresInfoIntent)
+    }
+
     fun processIntent(intent: GenreSelectionScreenIntent) {
         when (intent) {
             GenreSelectionScreenIntent.PressNextButtonIntent -> pressNextButton()

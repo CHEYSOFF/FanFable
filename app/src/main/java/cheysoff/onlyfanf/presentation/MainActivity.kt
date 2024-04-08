@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
@@ -16,6 +15,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import androidx.navigation.navOptions
 import cheysoff.onlyfanf.NavigationCommand
 import cheysoff.onlyfanf.NavigationManager
 import cheysoff.onlyfanf.design_system.theme.MyApplicationTheme
@@ -23,7 +23,6 @@ import cheysoff.onlyfanf.directions.BasicNavigation
 import cheysoff.onlyfanf.directions.MainNavigation
 import cheysoff.onlyfanf.directions.SignNavigation
 import cheysoff.onlyfanf.directions.StartNavigation
-import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.GenreSelectionScreenIntent
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.GenreSelectionViewModel
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.ShowGenreSelectionScreen
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.registrationcompletescreen.RegistrationCompleteViewModel
@@ -60,15 +59,25 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
 //                val navController = rememberNavController()
-                navigationManager.commands.collectAsState().value.also { command: NavigationCommand ->
-                    when (command) {
-                        BasicNavigation.Up -> navController.navigateUp()
-                        else ->
-                            if (command.destination.isNotEmpty()) {
-                                navController.navigate(command.destination)
-                            }
+                LaunchedEffect(navigationManager.commands) {
+                    navigationManager.commands.collect { command: NavigationCommand ->
+                        when (command) {
+                            BasicNavigation.Up -> navController.navigateUp()
+                            else ->
+                                if (command.destination.isNotEmpty()) {
+                                    navController.navigate(
+                                        route = command.destination,
+                                        navOptions = navOptions { launchSingleTop = true
+//                                        popUpTo(SignNavigation.root.destination) {
+//                                            inclusive = false
+//                                        }
+                                        }
+                                    )
+                                }
+                        }
                     }
                 }
+
 
 //            var userType = UserType.READER
                 NavHost(
@@ -80,6 +89,7 @@ class MainActivity : ComponentActivity() {
                         route = StartNavigation.root.destination,
                         startDestination = StartNavigation.StartWelcome.destination
                     ) {
+
                         composable(StartNavigation.StartWelcome.destination) {
                             val viewModel =
                                 it.sharedViewModel<WelcomeScreenViewModel>(navController)
@@ -98,9 +108,9 @@ class MainActivity : ComponentActivity() {
                             val viewModel =
                                 it.sharedViewModel<GenreSelectionViewModel>(navController)
 
-                            LaunchedEffect(Unit) {
-                                viewModel.processIntent(GenreSelectionScreenIntent.LoadGenresInfoIntent)
-                            }
+//                            LaunchedEffect(navController) {
+//                                viewModel.processIntent(GenreSelectionScreenIntent.LoadGenresInfoIntent)
+//                            }
 
                             ShowGenreSelectionScreen(viewModel.state) { intent ->
                                 viewModel.processIntent(intent)
@@ -120,6 +130,7 @@ class MainActivity : ComponentActivity() {
                         route = SignNavigation.root.destination,
                         startDestination = SignNavigation.SignRegistration.destination
                     ) {
+
                         composable(SignNavigation.SignRegistration.destination) {
                             val viewModel =
                                 it.sharedViewModel<RegistrationScreenViewModel>(navController)

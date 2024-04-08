@@ -44,7 +44,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     hilt()
-    implementation("com.google.firebase:firebase-auth:22.3.1")
+    firebaseAuth()
+
     implementation(project(":registration_domain"))
 
 }
