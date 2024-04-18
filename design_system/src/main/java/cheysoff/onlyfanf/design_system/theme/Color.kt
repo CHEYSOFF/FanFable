@@ -29,7 +29,7 @@ val BackgroundColor = White
 val UserChooserEvenCardBackgroundColor = DarkPurple.copy(alpha = 0.04f)
 val UserChooserOddCardBackgroundColor = DarkPurple.copy(alpha = 0.14f)
 
-val LoginFieldColor = TransparentPink20
+val TextFieldColor = TransparentPink20
 
 val InactiveButtonColor = TransparentPurple21
 val ActiveButtonColor = ScreenElementsColor

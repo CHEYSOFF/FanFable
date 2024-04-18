@@ -15,7 +15,7 @@ import cheysoff.onlyfanf.design_system.theme.WelcomeScreenDescriptionTextStyle
 import cheysoff.onlyfanf.design_system.theme.WelcomeScreenHeaderTextStyle
 
 @Composable
-fun ShowWelcomeScreen(onIntentReceived: (WelcomeScreenIntent) -> Unit) {
+fun WelcomeScreen(onIntentReceived: (WelcomeScreenIntent) -> Unit) {
     BottomNextButtonScreen(
         topComposable = {
             Text(

@@ -32,7 +32,7 @@ import cheysoff.onlyfanf.design_system.theme.WelcomeScreenChooseUserChooserTextS
 import cheysoff.onlyfanf.welcomescreen.screens.userpickerscreen.components.UserType
 
 @Composable
-fun ShowUserPickerScreen(
+fun UserPickerScreen(
     state: UserPickerScreenState,
     onIntentReceived: (UserPickerScreenIntent) -> Unit
 ) {

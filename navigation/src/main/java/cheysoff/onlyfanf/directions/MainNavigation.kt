@@ -35,6 +35,14 @@ object MainNavigation {
         override val destination = "MainProfile"
 
     }
+
+    val MainSettings = object : NavigationCommand {
+
+        override val arguments = emptyList<NamedNavArgument>()
+
+        override val destination = "MainSettings"
+
+    }
 }
 
 //enum class MainScreen {

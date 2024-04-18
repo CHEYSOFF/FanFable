@@ -23,17 +23,20 @@ import cheysoff.onlyfanf.directions.BasicNavigation
 import cheysoff.onlyfanf.directions.MainNavigation
 import cheysoff.onlyfanf.directions.SignNavigation
 import cheysoff.onlyfanf.directions.StartNavigation
+import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.GenreSelectionScreen
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.GenreSelectionViewModel
-import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.genreselectionscreen.ShowGenreSelectionScreen
+import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.registrationcompletescreen.RegistrationCompleteScreen
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.registrationcompletescreen.RegistrationCompleteViewModel
-import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.screens.registrationcompletescreen.ShowRegistrationCompleteScreen
+import cheysoff.onlyfanf.main_screens_mutual_ui.MainScreensScaffoldViewModel
+import cheysoff.onlyfanf.my_stories_ui.MyStoriesScreen
+import cheysoff.onlyfanf.my_stories_ui.MyStoriesScreenViewModel
+import cheysoff.onlyfanf.screens.loginscreen.LoginScreen
 import cheysoff.onlyfanf.screens.loginscreen.LoginScreenViewModel
-import cheysoff.onlyfanf.screens.loginscreen.ShowLoginScreen
+import cheysoff.onlyfanf.screens.registrationscreen.RegistrationScreen
 import cheysoff.onlyfanf.screens.registrationscreen.RegistrationScreenViewModel
-import cheysoff.onlyfanf.screens.registrationscreen.ShowRegistrationScreen
-import cheysoff.onlyfanf.welcomescreen.screens.userpickerscreen.ShowUserPickerScreen
+import cheysoff.onlyfanf.welcomescreen.screens.userpickerscreen.UserPickerScreen
 import cheysoff.onlyfanf.welcomescreen.screens.userpickerscreen.UserPickerScreenViewModel
-import cheysoff.onlyfanf.welcomescreen.screens.welcomescreen.ShowWelcomeScreen
+import cheysoff.onlyfanf.welcomescreen.screens.welcomescreen.WelcomeScreen
 import cheysoff.onlyfanf.welcomescreen.screens.welcomescreen.WelcomeScreenViewModel
 import com.google.firebase.FirebaseApp
 import dagger.hilt.android.AndroidEntryPoint
@@ -67,7 +70,8 @@ class MainActivity : ComponentActivity() {
                                 if (command.destination.isNotEmpty()) {
                                     navController.navigate(
                                         route = command.destination,
-                                        navOptions = navOptions { launchSingleTop = true
+                                        navOptions = navOptions {
+                                            launchSingleTop = true
 //                                        popUpTo(SignNavigation.root.destination) {
 //                                            inclusive = false
 //                                        }
@@ -93,14 +97,14 @@ class MainActivity : ComponentActivity() {
                         composable(StartNavigation.StartWelcome.destination) {
                             val viewModel =
                                 it.sharedViewModel<WelcomeScreenViewModel>(navController)
-                            ShowWelcomeScreen { intent ->
+                            WelcomeScreen { intent ->
                                 viewModel.processIntent(intent)
                             }
                         }
                         composable(StartNavigation.StartUserPicker.destination) {
                             val viewModel =
                                 it.sharedViewModel<UserPickerScreenViewModel>(navController)
-                            ShowUserPickerScreen(viewModel.state) { intent ->
+                            UserPickerScreen(viewModel.state) { intent ->
                                 viewModel.processIntent(intent)
                             }
                         }
@@ -112,7 +116,7 @@ class MainActivity : ComponentActivity() {
 //                                viewModel.processIntent(GenreSelectionScreenIntent.LoadGenresInfoIntent)
 //                            }
 
-                            ShowGenreSelectionScreen(viewModel.state) { intent ->
+                            GenreSelectionScreen(viewModel.state) { intent ->
                                 viewModel.processIntent(intent)
                             }
                         }
@@ -120,7 +124,7 @@ class MainActivity : ComponentActivity() {
                             val viewModel =
                                 it.sharedViewModel<RegistrationCompleteViewModel>(navController)
 
-                            ShowRegistrationCompleteScreen { intent ->
+                            RegistrationCompleteScreen { intent ->
                                 viewModel.processIntent(intent)
                             }
                         }
@@ -135,7 +139,7 @@ class MainActivity : ComponentActivity() {
                             val viewModel =
                                 it.sharedViewModel<RegistrationScreenViewModel>(navController)
 
-                            ShowRegistrationScreen(viewModel.state) { intent ->
+                            RegistrationScreen(viewModel.state) { intent ->
                                 viewModel.processIntent(intent)
                             }
                         }
@@ -143,7 +147,7 @@ class MainActivity : ComponentActivity() {
                             val viewModel =
                                 it.sharedViewModel<LoginScreenViewModel>(navController)
 
-                            ShowLoginScreen(viewModel.state) { intent ->
+                            LoginScreen(viewModel.state) { intent ->
                                 viewModel.processIntent(intent)
                             }
                         }
@@ -154,13 +158,24 @@ class MainActivity : ComponentActivity() {
 
                     navigation(
                         route = MainNavigation.root.destination,
-                        startDestination = MainNavigation.MainFeed.destination
+                        startDestination = MainNavigation.MainMyStories.destination
                     ) {
                         composable(MainNavigation.MainFeed.destination) {
 
                         }
                         composable(MainNavigation.MainMyStories.destination) {
-
+                            val scaffoldViewModel =
+                                it.sharedViewModel<MainScreensScaffoldViewModel>(navController)
+                            val storiesViewModel =
+                                it.sharedViewModel<MyStoriesScreenViewModel>(navController)
+                            MyStoriesScreen(mainScreensScaffoldState = scaffoldViewModel.state,
+                                mainScreensScaffoldOnIntentReceived = { intent ->
+                                    scaffoldViewModel.processIntent(intent)
+                                },
+                                myStoriesScreenState = storiesViewModel.state,
+                                myStoriesOnIntentReceived = { intent ->
+                                    TODO()
+                                })
                         }
                         composable(MainNavigation.MainProfile.destination) {
 
@@ -169,10 +184,10 @@ class MainActivity : ComponentActivity() {
 
 
 //                composable(GlobalNavigationItem.GlobalStart.route) {
-//                    ShowWelcomeScreen(navController = navController)
+//                    WelcomeScreen(navController = navController)
 //                }
 //                composable(GlobalNavigationItem.UserPicker.route) {
-//                    ShowUserPickerScreen(navController = navController) { newType ->
+//                    UserPickerScreen(navController = navController) { newType ->
 //                        userType = newType
 //                    }
 //                }

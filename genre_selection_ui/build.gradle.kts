@@ -9,16 +9,6 @@ android {
     namespace = "cheysoff.onlyfanf.genre_selection_ui"
     compileSdk = 34
 
-//    defaultConfig {
-//        applicationId = "vk.cheysoff.genre_selection_ui"
-//        minSdk = 24
-//        targetSdk = 34
-//        versionCode = 1
-//        versionName = "1.0"
-//
-//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-//    }
-
     buildTypes {
         release {
             isMinifyEnabled = false

@@ -79,4 +79,7 @@ dependencies {
 
     implementation(project(":navigation"))
     implementation(project(":design_system"))
+
+    implementation(project(":main_screens_mutual_ui"))
+    implementation(project(":my_stories_ui"))
 }

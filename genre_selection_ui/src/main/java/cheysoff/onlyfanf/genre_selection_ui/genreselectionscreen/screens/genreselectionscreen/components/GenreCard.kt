@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -19,7 +18,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -33,7 +31,7 @@ import coil.request.ImageRequest
 
 //@Preview
 @Composable
-fun ShowGenreCard(
+fun GenreCard(
     genreModel: GenreModel,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -88,22 +86,7 @@ fun ShowGenreCard(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.BottomStart
             ) {
-                Surface(
-                    modifier = Modifier
-                        .padding(horizontal = 9.dp, vertical = 14.dp)
-                        .size(20.dp)
-                        .clip(CircleShape),
-                    color = LocalCustomColorScheme.current.screenElementsColor
-                ) {
-                    Icon(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(3.dp),
-                        painter = painterResource(id = R.drawable.plus_icon),
-                        tint = LocalCustomColorScheme.current.backgroundColor,
-                        contentDescription = null
-                    )
-                }
+                GenrePlusBadge()
             }
         }
     }

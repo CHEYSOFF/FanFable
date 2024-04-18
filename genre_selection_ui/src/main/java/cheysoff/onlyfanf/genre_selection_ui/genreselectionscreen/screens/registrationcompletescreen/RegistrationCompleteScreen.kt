@@ -22,7 +22,7 @@ import cheysoff.onlyfanf.genre_selection_ui.R
 import cheysoff.onlyfanf.genre_selection_ui.genreselectionscreen.components.NextButtonBottomBar
 
 @Composable
-fun ShowRegistrationCompleteScreen(onIntentReceived: (RegistrationCompleteScreenIntent) -> Unit) {
+fun RegistrationCompleteScreen(onIntentReceived: (RegistrationCompleteScreenIntent) -> Unit) {
 
     Scaffold(
         modifier = Modifier

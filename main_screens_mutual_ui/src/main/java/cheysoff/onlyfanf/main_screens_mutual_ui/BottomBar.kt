@@ -1,8 +1,7 @@
-package cheysoff.onlyfanf.components
+package cheysoff.onlyfanf.main_screens_mutual_ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -17,7 +16,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import cheysoff.onlyfanf.design_system.R.drawable.feed_icon
 import cheysoff.onlyfanf.design_system.R.drawable.feed_icon_selected
 import cheysoff.onlyfanf.design_system.R.drawable.my_stories_icon
@@ -28,13 +26,12 @@ import cheysoff.onlyfanf.design_system.theme.BottomBarTextStyle
 
 
 @Composable
-fun BottomBar(navController: NavController, selectedItem: BottomBarItem) {
+fun BottomBar(onClickMap: Map<BottomBarItem, () -> Unit>, selectedItem: BottomBarItem) {
     var rememberedSelectedItem by remember { mutableStateOf(selectedItem) }
 
     NavigationBar(
         modifier = Modifier
-            .fillMaxWidth()
-            .height(100.dp),
+            .fillMaxWidth(),
         containerColor = Color.White,
     ) {
         for (item in BottomBarItem.entries) {
@@ -42,6 +39,7 @@ fun BottomBar(navController: NavController, selectedItem: BottomBarItem) {
             NavigationBarItem(
                 selected = false,
                 onClick = {
+                    onClickMap[item]?.invoke()
                     rememberedSelectedItem = item
                 },
                 icon = {

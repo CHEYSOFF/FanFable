@@ -60,8 +60,8 @@ fun BasicTextField(text: String, onValueChange: (String) -> Unit, textFieldType:
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = Color.Transparent,
             unfocusedBorderColor = Color.Transparent,
-            focusedContainerColor = LocalCustomColorScheme.current.loginFieldColor,
-            unfocusedContainerColor = LocalCustomColorScheme.current.loginFieldColor
+            focusedContainerColor = LocalCustomColorScheme.current.textFieldColor,
+            unfocusedContainerColor = LocalCustomColorScheme.current.textFieldColor
         ),
 
         shape = RoundedCornerShape(12.dp),

@@ -58,7 +58,7 @@ class LoginScreenViewModel @Inject constructor(
                         loading = false,
                         error = ""
                     )
-                    navigationManager.navigate(MainNavigation.MainFeed)
+                    navigationManager.navigate(MainNavigation.root)
                 }
             }
         }
